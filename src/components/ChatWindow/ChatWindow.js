@@ -4,11 +4,12 @@ import './ChatWindow.css';
 
 const MY_USER_ID = 5;
 
-const ChatWindow = ({ selectedUser }) => {
+const ChatWindow = ({ selectedUser, onBack }) => {
   const [messages, setMessages] = useState([]);
   const [msg, setMsg] = useState('');
   const [search, setSearch] = useState('');
   const messagesEndRef = useRef(null);
+  const messagesContainerRef = useRef(null);
 
   useEffect(() => {
     if (selectedUser) {
@@ -16,10 +17,9 @@ const ChatWindow = ({ selectedUser }) => {
     }
   }, [selectedUser]);
 
-  useEffect(() => {
-    messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
-  }, [messages]);
-
+  
+  
+  
   const sendMessage = () => {
     if (!msg.trim()) return;
     const chat = {
@@ -40,6 +40,11 @@ const ChatWindow = ({ selectedUser }) => {
   return (
     <div className="chatwindow-container">
       <div className="chatwindow-header">
+          {onBack && (
+              <button onClick={onBack} className="back-btn">
+                ←
+              </button>
+            )}
         <img className="chatwindow-avatar" src={selectedUser.profileImage} alt={selectedUser.username} />
         <div>
           <div className="chatwindow-username">{selectedUser.username}</div>
@@ -53,7 +58,7 @@ const ChatWindow = ({ selectedUser }) => {
         onChange={e => setSearch(e.target.value)}
       />
       </div>
-      <div className="chatwindow-messages">
+      <div className="chatwindow-messages" ref={ messagesContainerRef }>
         {filteredMessages.map((m, i) => (
           <div
             key={i}
