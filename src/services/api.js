@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const BASE_URL = 'http://18.143.79.95/api/chatSystem';
+const BASE_URL = import.meta.env.VITE_SERVER_URL;
 
 export const getUsers = () => axios.get(`${BASE_URL}/users/list`);
 
