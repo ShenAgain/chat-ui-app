@@ -9,7 +9,7 @@ app.use(cors());
 app.use(express.json());
 
 // ORIGINAL API BASE
-const OLD_API = "http://18.143.79.95/api/chatSystem";
+const OLD_API = process.env.OLD_API_URL;
 
 /**
  * USERS
