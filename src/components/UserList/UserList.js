@@ -8,7 +8,9 @@ const UserList = ({ onSelect }) => {
     const [filter, setFilter] = useState('');
 
     useEffect(() => {
-        getUsers().then(res => setUsers(res.data));
+        getUsers().then(res => {
+            console.log(res.data);setUsers(res.data)
+    });
     }, []);
 
     return (
