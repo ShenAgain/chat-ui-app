@@ -45,12 +45,16 @@ const Sidebar = () => {
           <Person4Icon />
         </IconButton>
       </div>
+      <div className='sidebar-user'>
       <Avatar
         alt={user ? user.username : "User"}
         src={user ? user.profileImage : ""}
         className="sidebar-avatar"
       />
-      <p>{user ? user.username : "User"}</p>
+      <span className="sidebar-name">
+        {user ? user.username : "User"}
+        </span>
+      </div>
     </div>
   );
 };

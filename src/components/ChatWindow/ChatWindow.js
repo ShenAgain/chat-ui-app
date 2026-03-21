@@ -46,7 +46,7 @@ const ChatWindow = ({ selectedUser, onBack }) => {
               </button>
             )}
         <img className="chatwindow-avatar" src={selectedUser.profileImage} alt={selectedUser.username} />
-        <div>
+        <div className='chatwindow-userinfo'>
           <div className="chatwindow-username">{selectedUser.username}</div>
           <div className="chatwindow-role">{selectedUser.position || 'User'}</div>
         </div>
